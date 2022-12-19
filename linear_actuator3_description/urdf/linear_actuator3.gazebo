@@ -1,0 +1,27 @@
+<?xml version="1.0" ?>
+<robot name="linear_actuator3" xmlns:xacro="http://www.ros.org/wiki/xacro" >
+
+<xacro:property name="body_color" value="Gazebo/Silver" />
+
+<gazebo>
+  <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+     <robotNamespace>/linear_actuator3</robotNamespace> 
+     <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+
+  </plugin>
+</gazebo>
+<gazebo reference="base_link">
+  <material>${body_color}</material>
+  
+  <selfCollide>true</selfCollide>
+  <gravity>true</gravity>
+</gazebo>
+
+<gazebo reference="child_1">
+  <material>${body_color}</material>
+  
+  <selfCollide>true</selfCollide>
+  <gravity>true</gravity>
+</gazebo>
+
+</robot>

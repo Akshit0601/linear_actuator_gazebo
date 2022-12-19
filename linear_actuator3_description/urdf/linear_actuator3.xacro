@@ -1,0 +1,57 @@
+<?xml version="1.0" ?>
+<robot name="linear_actuator3" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<xacro:include filename="$(find linear_actuator3_description)/urdf/materials.xacro" />
+<xacro:include filename="$(find linear_actuator3_description)/urdf/linear_actuator3.trans" />
+<xacro:include filename="$(find linear_actuator3_description)/urdf/linear_actuator3.gazebo" />
+<link name="base_link">
+  <inertial>
+    <origin xyz="0.14999999999999997 -1.5371850876519193e-18 -1.5371850876519193e-18" rpy="0 0 0"/>
+    <mass value="0.7257109791816839"/>
+    <inertia ixx="8.4e-05" iyy="0.005485" izz="0.005485" ixy="-0.0" iyz="-0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://linear_actuator3_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://linear_actuator3_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="child_1">
+  <inertial>
+    <origin xyz="-0.07493884347844576 0.0 0.0" rpy="0 0 0"/>
+    <mass value="0.24718232230056653"/>
+    <inertia ixx="8e-06" iyy="0.000468" izz="0.000468" ixy="0.0" iyz="-0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.3 -0.0 -0.0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://linear_actuator3_description/meshes/child_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.3 -0.0 -0.0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://linear_actuator3_description/meshes/child_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<joint name="Slider2" type="prismatic">
+  <origin xyz="0.3 0.0 0.0" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="child_1"/>
+  <axis xyz="1.0 0.0 0.0"/>
+  <limit  lower = "-0.015" upper = "0.015" effort="2" velocity="2"/>
+</joint>
+
+</robot>
